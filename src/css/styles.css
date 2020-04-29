@@ -1,0 +1,376 @@
+body {
+  background-color: #4cbbb9;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600 !important;
+}
+
+.sign-item {
+  /*width: 100%;*/
+  grid-area: 2 / 3 / 3 / 3;
+  align-self: baseline;
+  /*text-align: center;
+  align-self: end;*/
+  font-size: 10vmin;
+  color: #eff3c6;
+  text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.home-btn {
+  width: 18vmin;
+  height: 18vmin;
+  padding-top: 1.25vmin;
+  border-radius: 50%;
+  background-color: #eff3c6;
+  position: absolute;
+  top: 5vmin;
+  right: 5vmin;
+  font-size: 10vmin;
+  text-align: center;
+  color: #4cbbb9;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.home-btn:hover {
+  color: #4cbbb9;
+  background-color: rgb(239, 243, 198, 1);
+  transform: scale(1.03, 1.03);
+  transition: transform 0.5s;
+}
+
+.winner-font {
+  grid-area: 3 / 2 / 3 / 5;
+  height: 50%;
+  width: 100%;
+  align-self: start;
+  text-align: center;
+  font-size: 10vmin;
+  color: #eff3c6;
+  text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.winner-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 0.2fr 1.8fr 0.2fr 0.7fr;
+  grid-template-rows: 0.4fr 1fr 1fr 0.4fr;
+  padding: 0;
+}
+
+.cross-winner {
+  background-color: #eff3c6;
+  width: 90%;
+  height: 4.2vmin;
+  position: relative;
+  left: 5%;
+  top: 45%;
+  border-radius: 4.2vmin;
+  transform: rotate(45deg) scale(1, 1);
+  opacity: 1;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.cross-winner::before {
+  content: "";
+  background-color: #eff3c6;
+  width: 100%;
+  height: 4.2vmin;
+  position: absolute;
+  border-radius: 4.2vmin;
+  transform: rotate(90deg);
+  box-shadow: 7px -7px 10px rgba(0, 0, 0, 0.1), 4px -4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.cross-winner::after {
+  content: "";
+  background-color: #eff3c6;
+  width: 100%;
+  height: 4.2vmin;
+  position: absolute;
+  border-radius: 4.2vmin;
+}
+
+.circle-winner {
+  background-color: transparent;
+  width: 70%;
+  position: relative;
+  left: 15%;
+  top: 0;
+  border: 4.2vmin solid #eff3c6;
+  border-radius: 50%;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.circle-winner::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1) inset, 4px 4px 7px rgba(0, 0, 0, 0.05) inset;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(119, 216, 216, 0.7);
+  z-index: 2;
+}
+
+.overlay-row {
+  height: 100vh;
+}
+
+.hidden-overlay {
+  display: none;
+}
+
+.absolute-div {
+  position: absolute;
+}
+
+.my-btn {
+  color: #4cbbb9;
+  background-color: rgb(239, 243, 198, 0.9);
+  min-height: 20vmin;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+  border-radius: 15vh;
+  font-weight: 600;
+  font-size: 5vmin;
+  position: relative;
+}
+
+.my-btn:hover {
+  color: #4cbbb9;
+  background-color: rgb(239, 243, 198, 1);
+  transform: scale(1.03, 1.03);
+  transition: transform 0.5s;
+}
+
+.main-container {
+  height: 100vh;
+}
+
+.board {
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: 3.5vmin 3.5vmin;
+}
+
+.horizontal-board {
+  transform: rotate(90deg);
+}
+
+.line {
+  width: 3.5vmin;
+  background-color: #eff3c6;
+  height: 100%;
+  margin: 0;
+  border-radius: 3.5vmin;
+}
+
+.line-shadow {
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+@keyframes sign-animation {
+  0% {
+    transform: rotate(45deg) scale(0.6, 0.6);
+    opacity: 0;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(0, 0, 0, 0);
+  }
+
+  50% {
+    transform: rotate(45deg) scale(1.1, 1.1);
+    opacity: 1;
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.1), 5px 5px 9px rgba(0, 0, 0, 0.05);
+  }
+
+  100% {
+    transform: rotate(45deg) scale(1, 1);
+    opacity: 1;
+    box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.cross {
+  background-color: #eff3c6;
+  width: 90%;
+  height: 3vmin;
+  position: relative;
+  left: 5%;
+  top: 45%;
+  border-radius: 3vmin;
+  transform: rotate(45deg) scale(1, 1);
+  opacity: 1;
+  animation-name: sign-animation;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.cross::before {
+  content: "";
+  background-color: #eff3c6;
+  width: 100%;
+  height: 3vmin;
+  position: absolute;
+  border-radius: 3vmin;
+  transform: rotate(90deg);
+  box-shadow: 7px -7px 10px rgba(0, 0, 0, 0.1), 4px -4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.cross::after {
+  content: "";
+  background-color: #eff3c6;
+  width: 100%;
+  height: 3vmin;
+  position: absolute;
+  border-radius: 3vmin;
+}
+
+.circle {
+  background-color: transparent;
+  width: 70%;
+  height: 70%;
+  position: relative;
+  left: 15%;
+  top: 15%;
+  border: 3vmin solid #eff3c6;
+  border-radius: 50%;
+  transform: rotate(45deg) scale(1, 1);
+  opacity: 1;
+  animation-name: sign-animation;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.circle::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1) inset, 4px 4px 7px rgba(0, 0, 0, 0.05) inset;
+}
+
+@keyframes sign-animation-win {
+  0% {
+    transform: rotate(45deg) scale(1, 1);
+    box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+  }
+
+  50% {
+    transform: rotate(45deg) scale(1.1, 1.1);
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.1), 5px 5px 9px rgba(0, 0, 0, 0.05);
+  }
+
+  100% {
+    transform: rotate(45deg) scale(1, 1);
+    box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.cross-win {
+  background-color: #ff6363;
+  width: 90%;
+  height: 3vmin;
+  position: relative;
+  left: 5%;
+  top: 45%;
+  border-radius: 3vmin;
+  transform: rotate(45deg) scale(1, 1);
+  opacity: 1;
+  animation-name: sign-animation-win;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 3;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.cross-win::before {
+  content: "";
+  background-color: #ff6363;
+  width: 100%;
+  height: 3vmin;
+  position: absolute;
+  border-radius: 3vmin;
+  transform: rotate(90deg);
+  box-shadow: 7px -7px 10px rgba(0, 0, 0, 0.1), 4px -4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.cross-win::after {
+  content: "";
+  background-color: #ff6363;
+  width: 100%;
+  height: 3vmin;
+  position: absolute;
+  border-radius: 3vmin;
+}
+
+.circle-win {
+  background-color: transparent;
+  width: 70%;
+  height: 70%;
+  position: relative;
+  left: 15%;
+  top: 15%;
+  border: 3vmin solid #ff6363;
+  border-radius: 50%;
+  transform: rotate(45deg) scale(1, 1);
+  opacity: 1;
+  animation-name: sign-animation-win;
+  animation-iteration-count: 3;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1), 4px 4px 7px rgba(0, 0, 0, 0.05);
+}
+
+.circle-win::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.1) inset, 4px 4px 7px rgba(0, 0, 0, 0.05) inset;
+}
+
+.aaa {
+  background-color: blue;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  animation-name: aaanimation;
+  animation-duration: 4s;
+  transform: scale(1, 1);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 1), 0px 0px 1px rgba(0, 0, 0, 1);
+}
+
+.bbb {
+  background-color: blue;
+  width: 50px;
+  height: 50px;
+  top: 60px;
+  position: absolute;
+  animation-name: aaanimation;
+  animation-duration: 4s;
+  transform: scale(1, 1);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 1), 0px 0px 1px rgba(0, 0, 0, 1);
+}
+
+/* PALETA DE COLORES:
+#0779e4
+#4cbbb9
+#77d8d8
+#eff3c6
+*/
